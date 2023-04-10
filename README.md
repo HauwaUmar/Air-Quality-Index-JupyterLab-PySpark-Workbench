@@ -142,6 +142,8 @@ CREATE TABLE IF NOT EXISTS public.forecast
 ## Additional Information
 - This container currently exists on Digital Ocean cloud with all the relevant tables, data, and script connected to Tableau for visualization
 - The dashboard can be accessed on this page https://prod-ca-a.online.tableau.com/t/data6300/views/AirQualityIndex/Dashboard1
+- In order to connect to the database on the cloud use this as host: 159.203.40.51
+- In order to connect to the jupyter notebook use this http://159.203.40.51:8008
 - The db_data volume is used to persist the data in the PostgreSQL container across restarts.
 - The ./notebooks directory is mounted as a volume in the JupyterLab container, so you can save your notebooks there and they will persist across container restarts.
 - The ./data and ./scripts directories are also mounted as volumes in the JupyterLab container, so you can access them from within the container.
