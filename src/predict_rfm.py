@@ -16,7 +16,7 @@ spark = SparkSession.builder \
 
 
 # Set database connection properties
-host="159.203.40.51"
+host="host.docker.internal"
 database="data6300"
 user="aqidb"
 password="mypassword"
