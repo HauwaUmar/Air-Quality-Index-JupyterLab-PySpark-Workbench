@@ -22,6 +22,11 @@ git clone https://github.com/yourusername/aqi-jupyterlab-workbench.git
 cd aqi-jupyterlab-workbench
 ```
 
+3. Create a .env file based on the default.env file:
+
+```bash
+cp .env .env
+```
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
