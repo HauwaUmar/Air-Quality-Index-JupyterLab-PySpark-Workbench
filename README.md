@@ -62,6 +62,92 @@ docker-compose --env-file .env up -d
 docker-compose --env-file .env down 
 ```
 
+## Details on code
+
+1. First connect to the database on pgadmin and create the following table
+```
+
+CREATE TABLE IF NOT EXISTS public.coord_info
+(
+    coord_key integer,
+    city_name character varying(100) COLLATE pg_catalog."default",
+    province character varying(10) COLLATE pg_catalog."default",
+    country character varying(100) COLLATE pg_catalog."default",
+    latitude double precision,
+    longitude double precision
+)
+
+CREATE TABLE IF NOT EXISTS public.current_gas_info
+(
+    date date,
+    co double precision,
+    no double precision,
+    no2 double precision,
+    o3 double precision,
+    so2 double precision,
+    pm2_5 double precision,
+    pm10 double precision,
+    nh3 double precision,
+    aqi double precision,
+    lon double precision,
+    lat double precision,
+    coord_key integer
+)
+
+CREATE TABLE IF NOT EXISTS public.historic_gas_info
+(
+    date date,
+    co double precision,
+    no double precision,
+    no2 double precision,
+    o3 double precision,
+    so2 double precision,
+    pm2_5 double precision,
+    pm10 double precision,
+    nh3 double precision,
+    aqi double precision,
+    lon double precision,
+    lat double precision,
+    coord_key integer
+)
+
+
+
+CREATE TABLE IF NOT EXISTS public.forecast
+(
+    date date,
+    dayofweek integer,
+    month integer,
+    year integer,
+    co double precision,
+    no double precision,
+    no2 double precision,
+    o3 double precision,
+    so2 double precision,
+    pm2_5 double precision,
+    pm10 double precision,
+    nh3 double precision,
+    aqi double precision,
+    coord_key integer,
+    prediction double precision
+)
+
+```
+
+2. Run the following command to start the containers:
+```
+docker-compose --env-file .env up -d
+```
+3. Wait for the containers to start up (this may take a few minutes).
+
+4. Open a web browser and navigate to http://localhost:8008/ .
+
+5. You should see the JupyterLab interface with PySpark installed.
+
+6. To stop the containers, run the following command:
+```
+docker-compose --env-file .env down 
+```
 ## Additional Information
 - The db_data volume is used to persist the data in the PostgreSQL container across restarts.
 - The ./notebooks directory is mounted as a volume in the JupyterLab container, so you can save your notebooks there and they will persist across container restarts.
