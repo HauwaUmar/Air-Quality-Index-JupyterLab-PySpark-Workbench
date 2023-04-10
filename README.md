@@ -134,21 +134,15 @@ CREATE TABLE IF NOT EXISTS public.forecast
 
 ```
 
-2. Run the following command to start the containers:
-```
-docker-compose --env-file .env up -d
-```
-3. Wait for the containers to start up (this may take a few minutes).
+2. Run the coord.py script first then the historic_info.py script to populate their respective tables
 
-4. Open a web browser and navigate to http://localhost:8008/ .
+3. Run the get_aqihs.py script and predit_rfm.py script to populate current data and train and predict
 
-5. You should see the JupyterLab interface with PySpark installed.
 
-6. To stop the containers, run the following command:
-```
-docker-compose --env-file .env down 
-```
 ## Additional Information
+- There is currently a database on Digital Ocean cloud with all the relevant tables and data and connected to Tableau for visualization
+- The dashboard can be accessed on this page https://prod-ca-a.online.tableau.com/t/data6300/views/AirQualityIndex/Dashboard1
+
 - The db_data volume is used to persist the data in the PostgreSQL container across restarts.
 - The ./notebooks directory is mounted as a volume in the JupyterLab container, so you can save your notebooks there and they will persist across container restarts.
 - The ./data and ./scripts directories are also mounted as volumes in the JupyterLab container, so you can access them from within the container.
